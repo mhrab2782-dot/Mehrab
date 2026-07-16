@@ -2,280 +2,97 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mehrab Gamer</title>
 
 <style>
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-height:100vh;
-overflow:hidden;
-background:linear-gradient(135deg,#0066ff,#8b00ff);
-font-family:Arial,sans-serif;
-color:white;
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    color:white;
+    background:linear-gradient(135deg,#0066ff,#8a00ff);
 }
 
+
+/* Loading */
+
 #loading{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
 }
 
 .name{
-font-size:60px;
-font-weight:bold;
-cursor:pointer;
-animation:move 1s infinite alternate;
-text-shadow:0 0 20px white;
+    font-size:55px;
+    font-weight:bold;
+    cursor:pointer;
+    animation:updown 1s infinite alternate;
+    text-shadow:0 0 25px white;
 }
 
-@keyframes move{
-from{transform:translateY(0);}
-to{transform:translateY(-25px);}
+@keyframes updown{
+    from{transform:translateY(0);}
+    to{transform:translateY(-25px);}
 }
 
 .job{
-font-size:24px;
-margin:15px;
+    margin:15px;
+    font-size:20px;
+}
+
+.loader{
+    width:280px;
+    height:20px;
+    background:#ffffff40;
+    border-radius:20px;
+    overflow:hidden;
 }
 
 .bar{
-width:320px;
-height:22px;
-background:#ffffff44;
-border-radius:20px;
-overflow:hidden;
-}
-
-.progress{
-height:100%;
-width:0%;
-background:white;
+    height:100%;
+    width:0%;
+    background:white;
 }
 
 #percent{
-margin-top:10px;
+    margin-top:10px;
 }
 
+
+/* سایت اصلی */
 
 #site{
-display:none;
-text-align:center;
-padding-top:150px;
+    display:none;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-
-.social{
-position:absolute;
-bottom:30px;
-width:100%;
-}
 
 .card{
-display:inline-block;
-padding:15px 35px;
-margin:10px;
-background:#ffffff22;
-border-radius:20px;
-backdrop-filter:blur(10px);
-font-size:18px;
-}
 
+    width:85%;
+    max-width:400px;
 
-/* ذرات انفجار */
-.particle{
-position:absolute;
-width:10px;
-height:10px;
-background:white;
-border-radius:50%;
-pointer-events:none;
-}
-</style>
+    padding:35px;
 
-</head>
+    text-align:center;
 
-<body>
+    background:#ffffff22;
 
+    border-radius:30px;
 
-<div id="loading">
+    backdrop-filter:blur(15px);
 
-<div class="name" onclick="explode(event)">
-Mehrab
-</div>
-
-<div class="job">
-GAMER ⚡ FOOTBALL PLAYER
-</div>
-
-
-<div class="bar">
-<div class="progress" id="progress"></div>
-</div>
-
-<div id="percent">
-0%
-</div>
-
-</div>
-
-
-
-<div id="site">
-
-<h1>
-WELCOME TO MEHRAB WEBSITE
-</h1>
-
-
-<div class="social">
-
-<div class="card">
-Telegram : @mehrab_ramzi
-</div>
-
-
-<div class="card">
-Rubika : @mehrab_ramzi
-</div>
-
-</div>
-
-</div>
-
-
-
-<script>
-
-// Loading
-
-let p=0;
-
-let timer=setInterval(()=>{
-
-p++;
-
-progress.style.width=p+"%";
-percent.innerHTML=p+"%";
-
-
-if(p>=100){
-
-clearInterval(timer);
-
-loading.style.display="none";
-site.style.display="block";
-
-}
-
-},30);
-
-
-
-// انفجار اسم
-
-function explode(e){
-
-for(let i=0;i<60;i++){
-
-let x=document.createElement("div");
-
-x.className="particle";
-
-x.style.left=e.clientX+"px";
-x.style.top=e.clientY+"px";
-
-document.body.appendChild(x);
-
-
-let angle=Math.random()*360;
-let distance=Math.random()*250;
-
-
-x.animate([
-
-{
-transform:"translate(0,0)",
-opacity:1
-},
-
-{
-transform:
-`translate(${Math.cos(angle)*distance}px,
-${Math.sin(angle)*distance}px)`,
-opacity:0
-}
-
-],
-{
-duration:1200
-});
-
-
-setTimeout(()=>{
-x.remove();
-},1200);
-
-}
-
-}
-
-
-
-// باران، برف و سبز
-
-function weather(){
-
-let drop=document.createElement("div");
-
-drop.style.position="absolute";
-drop.style.top="-20px";
-drop.style.left=Math.random()*100+"%";
-drop.style.width="5px";
-drop.style.height="18px";
-
-let colors=["white","white","lime"];
-
-drop.style.background=
-colors[Math.floor(Math.random()*3)];
-
-document.body.appendChild(drop);
-
-
-drop.animate([
-
-{
-transform:"translateY(0)"
-},
-
-{
-transform:"translateY(110vh)"
-}
-
-],
-{
-duration:3000
-});
-
-
-setTimeout(()=>{
-drop.remove();
-},3000);
-
-}
-
-
-setInterval(weather,100);
-
-
-</script>
-
-
-</body>
-</html>
+    box-shadow:0 0 40px #0005
